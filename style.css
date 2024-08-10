@@ -1,0 +1,65 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calcContainer{
+    width: 26em;
+    height: 36em;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: wheat;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#screen{
+    margin: 8px 0 6px 0;
+    width: 94%;
+    border-radius: 10px;
+    height: calc(100% / 5);
+    background-color: lightgray;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#buttons{
+    height: calc(100% / 1.2);
+    display: flex;
+}
+
+#numpad{
+    width: 18rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#operators{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+}
+
+.number{
+    margin: 2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 20%;
+    height: 4.4rem;
+    width: 5.6rem;
+    text-align: center;
+}
+
+#numpad .number{
+    background-color: lightcoral;
+}
+
+#operators .number{
+    background-color: lightgreen;
+}
