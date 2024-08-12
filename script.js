@@ -30,6 +30,7 @@ let x = "";
 let op = "";
 let int1;
 let final;
+let operatorFlag = false;
 
 //Functionality of keys with numbers
 document.querySelectorAll(".number").forEach(key => {
@@ -48,6 +49,10 @@ let clearVarScreen = () => {
 //Operators
 document.querySelectorAll(".oper").forEach(oper => {
     oper.addEventListener("click", operFunc = () => {
+        if (operatorFlag === true){
+            final = operate(op, int1, parseInt(x));
+        }
+
         if (!final) {
             int1 = parseInt(x);
         }
@@ -56,6 +61,7 @@ document.querySelectorAll(".oper").forEach(oper => {
         }
         clearVarScreen();
         op = oper.innerHTML;
+        operatorFlag = true;
     })
 })
 
@@ -64,6 +70,8 @@ document.querySelector(".clear").addEventListener("click", clearFunc = () => {
     clearVarScreen();
     final = 0;
 });
+
+
 document.querySelector(".del").addEventListener("click", delFun = () => {
     let s = screen.innerHTML;
     s = s.slice(0, -1);
@@ -76,5 +84,8 @@ document.querySelector(".del").addEventListener("click", delFun = () => {
 let equal = () => {
     final = operate(op, int1, parseInt(x));
     screen.innerHTML = final;
+    operatorFlag = false;
 }
+
+
 document.querySelector(".equal").addEventListener("click", equal)
