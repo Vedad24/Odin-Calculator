@@ -101,7 +101,12 @@ document.querySelector(".del").addEventListener("click", delFun);
 // Equal
 let equal = () => {
     final = parseFloat(operate(op, int1, parseFloat(x)));
-    screen.innerHTML = final;
+    if (final > 9999999999) {
+        screen.innerHTML = "Error";
+    }
+    else {
+        screen.innerHTML = final;
+    }
     if (final == Infinity) {
         screen.innerHTML = "EPIC FAIL!";
     }

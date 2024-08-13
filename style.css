@@ -78,6 +78,13 @@ body{
     background-color: #86A3B8;
 }
 
+
+.zero{
+    border-radius: 13%;
+    width: 11.6rem;
+    margin-left: 1px;
+}
+
 #operators .oper{
     background-color: #F48484;
 }
@@ -103,6 +110,12 @@ body{
 
     #numpad{
         width: 16rem;
+    }
+
+    .zero{
+        border-radius: 13%;
+        width: 8.7rem;
+        margin-left: 5px;
     }
 
     #screen h1{
