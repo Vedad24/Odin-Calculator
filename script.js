@@ -98,3 +98,13 @@ document.querySelector(".point").addEventListener("click", pointFunc = () => {
     x += ".";
     screen.innerHTML += ".";
 })
+
+
+// Audio
+
+let clickSound = new Audio("click.wav");
+document.querySelectorAll(".audio").forEach(btn => {
+    btn.addEventListener("click", soundFunc = () => {
+        clickSound.play();
+    })
+})
