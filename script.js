@@ -22,7 +22,8 @@ let multiply = (num1, num2) => {
     return num1 * num2;
 }
 let divide = (num1, num2) => {
-    return num1 / num2;
+    let res = num1 / num2;
+    return res.toFixed(8);
 }
 
 let screen = document.querySelector("#screenInput");

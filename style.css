@@ -81,3 +81,33 @@ body{
 #operators .oper{
     background-color: #F48484;
 }
+
+
+@media only screen and (max-width: 600px) {
+    #calcContainer{
+        width: 20em;
+        height: 32em;
+    }
+
+    .button, .number, .oper{
+        height: 3.8rem;
+        width: 4.2rem;
+        font-size: large;
+    }
+
+    #operators{
+        position: relative;
+        right: 16px;
+        width: 4.2rem;
+    }
+
+    #numpad{
+        width: 16rem;
+    }
+
+    #screen h1{
+        margin: 0.8rem;
+        font-size: 45px;
+        letter-spacing: 0.3rem;
+    }
+}
