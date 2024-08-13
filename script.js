@@ -1,3 +1,5 @@
+let screen = document.querySelector("#screenInput");
+
 let operate = (operator, num1, num2) => {
     switch (operator) {
         case "+":
@@ -8,6 +10,8 @@ let operate = (operator, num1, num2) => {
             return multiply(num1, num2);
         case "/":
             return divide(num1, num2);
+        case "%":
+            return modulo(num1, num2);
         default:
             return "Input not ok!";
     }
@@ -29,7 +33,10 @@ let divide = (num1, num2) => {
     return res.toFixed(2);
 }
 
-let screen = document.querySelector("#screenInput");
+let modulo = (num1, num2) => {
+    return num1 % num2;
+}
+
 let x = "";
 let op = "";
 let int1;
@@ -76,18 +83,28 @@ document.querySelector(".clear").addEventListener("click", clearFunc = () => {
 });
 
 
-document.querySelector(".del").addEventListener("click", delFun = () => {
+delFun = () => {
     let s = screen.innerHTML;
     s = s.slice(0, -1);
     screen.innerHTML = s;
     x = x.slice(0, - 1);
-});
+    final /= 10;
+    if (x == "") {
+        clearVarScreen();
+        final = 0;
+    }
+}
+
+document.querySelector(".del").addEventListener("click", delFun);
 
 
 // Equal
 let equal = () => {
     final = parseFloat(operate(op, int1, parseFloat(x)));
     screen.innerHTML = final;
+    if (final == Infinity) {
+        screen.innerHTML = "EPIC FAIL!";
+    }
     operatorFlag = false;
 }
 
@@ -107,4 +124,46 @@ document.querySelectorAll(".audio").forEach(btn => {
     btn.addEventListener("click", soundFunc = () => {
         clickSound.play();
     })
+})
+
+// keyboard support
+
+document.addEventListener("keydown", (event) => {
+    if (event.key >= 0 && event.key <= 9) {
+        if (x.length < 10) {
+            x += parseFloat(event.key);
+            screen.innerHTML += event.key;
+        } 
+    }
+    else if (event.key === "Enter"){
+        equal();
+    }
+    else if (event.key === 'Backspace') {
+        delFun();
+    }
+    
+    else if (event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
+        if (operatorFlag === true){
+            final = parseFloat(operate(event.key, parseFloat(int1), parseFloat(x)));
+        }
+
+        if (!final) {
+            int1 = parseFloat(x);
+        }
+        else {
+            int1 = parseFloat(final);
+        }
+        clearVarScreen();
+        op = event.key;
+        operatorFlag = true;
+    }
+    else if (event.key === ".") {
+        x += ".";
+        screen.innerHTML += ".";
+    }
+    else if (event.key === "Delete") {
+        clearVarScreen();
+        final = 0;
+    }
+
 })
