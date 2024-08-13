@@ -13,7 +13,7 @@ let operate = (operator, num1, num2) => {
     }
 }
 let add = (num1, num2) => {
-    return num1 + num2;
+    return (num1 + num2).toFixed(2);
 }
 let subtract = (num1, num2) => {
     return num1 - num2;
@@ -23,7 +23,10 @@ let multiply = (num1, num2) => {
 }
 let divide = (num1, num2) => {
     let res = num1 / num2;
-    return res.toFixed(8);
+    if (num1 % num2 === 0) {
+        return res
+    }
+    return res.toFixed(2);
 }
 
 let screen = document.querySelector("#screenInput");
@@ -37,7 +40,7 @@ let operatorFlag = false;
 document.querySelectorAll(".number").forEach(key => {
     key.addEventListener("click", keyPress = () => {
         if (x.length < 10) {
-            x += parseInt(key.innerHTML);
+            x += parseFloat(key.innerHTML);
             screen.innerHTML += key.innerHTML;
         }    
     } )
@@ -51,14 +54,14 @@ let clearVarScreen = () => {
 document.querySelectorAll(".oper").forEach(oper => {
     oper.addEventListener("click", operFunc = () => {
         if (operatorFlag === true){
-            final = operate(op, int1, parseInt(x));
+            final = parseFloat(operate(op, int1, parseFloat(x)));
         }
 
         if (!final) {
-            int1 = parseInt(x);
+            int1 = parseFloat(x);
         }
         else {
-            int1 = final;
+            int1 = parseFloat(final);
         }
         clearVarScreen();
         op = oper.innerHTML;
@@ -83,10 +86,15 @@ document.querySelector(".del").addEventListener("click", delFun = () => {
 
 // Equal
 let equal = () => {
-    final = operate(op, int1, parseInt(x));
+    final = parseFloat(operate(op, int1, parseFloat(x)));
     screen.innerHTML = final;
     operatorFlag = false;
 }
 
-
 document.querySelector(".equal").addEventListener("click", equal)
+
+// Point
+document.querySelector(".point").addEventListener("click", pointFunc = () => {
+    x += ".";
+    screen.innerHTML += ".";
+})
