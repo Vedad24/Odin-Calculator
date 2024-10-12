@@ -27,6 +27,8 @@ A simple, responsive web-based calculator with keyboard support and sound effect
 
 ## How to Use
 
+  [**Live Demo**](https://vedad24.github.io/Odin-Calculator/)
+
 1. Clone or download the repository.
 2. Open `index.html` in your browser.
 3. Use the on-screen buttons or your keyboard to perform calculations.
